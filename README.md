@@ -40,9 +40,10 @@ The dataset consists of **78,600 metaverse transactions** with attributes captur
    - **Local Outlier Factor (LOF):** Captures local density deviations, effective in spotting *contextual anomalies*.  
    - **ECOD (Empirical Cumulative Distribution Outlier Detection):** Non-parametric model leveraging feature-wise tail probabilities, robust for heterogeneous data.  
 
-3. **Consensus Anomaly Scoring**  
-   - Generated anomaly scores from all three models.  
-   - Flagged transactions as anomalous when consistently detected across methods.  
+3. **Consensus Anomaly Detection**
+   - Generated anomaly sets from each model separately.
+   - Flagged transactions as high-confidence anomalies when consistently detected across multiple methods.
+   - Quantified model agreement using Jaccard similarity, highlighting overlap and consensus strength.
 
 4. **Explainability (SHAP)**  
    - Applied SHAP values on consensus-flagged anomalies.  
@@ -52,9 +53,8 @@ The dataset consists of **78,600 metaverse transactions** with attributes captur
 
 ## 📈 Impact  
 
-- ✅ Identified **1,380 high-risk transactions (~2% of total)** including rare, contextual, and collective anomalies.  
-- ✅ Achieved **~25% improvement in anomaly precision** compared to rule-based methods.  
-- ✅ Enabled **30% faster fraud investigation workflows** by integrating SHAP-driven explainability.  
+- ✅ ECOD model (3,530 anomalies) showed the strongest statistical separation among the three models.
+- ✅ Enhanced **investigation efficiency** by providing **SHAP-based feature attributions**, which reduced manual probing and accelerated decision-making. 
 - ✅ Provided analysts with actionable insights on **which features contributed most to anomalous flags** (e.g., unusual transaction amount, login frequency patterns, region-specific anomalies).  
 
 ---
@@ -63,7 +63,6 @@ The dataset consists of **78,600 metaverse transactions** with attributes captur
 
 - **Model Deployment**: Wrap anomaly detection into a deployable API for real-time transaction monitoring.  
 - **Deep Learning**: Introduce **Autoencoders** and **Variational Autoencoders** for advanced anomaly representation.  
-- **Graph-based Anomaly Detection**: Model blockchain transactions as networks to capture relational fraud patterns.  
 - **LLM + RAG for Analysts**:  
   - Use LLMs to convert model outputs into **human-friendly explanations**.  
   - Imagine a chatbot where an analyst can query:  
@@ -80,5 +79,3 @@ The dataset consists of **78,600 metaverse transactions** with attributes captur
 - **Matplotlib / Seaborn**: Visualization  
 
 ---
-
-## 📂 Project Structure  
